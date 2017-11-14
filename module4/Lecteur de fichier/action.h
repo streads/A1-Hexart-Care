@@ -18,7 +18,7 @@ hearBeat getMax(hearBeat **HB);
 void getMin(hearBeat **HB);
 
 
-float getAverage(hearBeat **HB);
+float getAverage(hearBeat **HB, int nbEntree);
 
 
 void sort(hearBeat **HB, *(Cmp));

@@ -1,3 +1,6 @@
+#include "action.h"
+
+
 int readCSV(hearBeat **HB){
     char temp[LENGTH_LINE];
     FILE *f = NULL;
@@ -12,12 +15,13 @@ int readCSV(hearBeat **HB){
 }
 
 
+//On remplacera par la fonction qui prend la 1ère valeur du tri
 hearBeat getMax(hearBeat **HB){
     int i = 1;
     int iFinal = 0;
-    while(HB[i] != NULL)
+    while(hearBeat[i].BPM != NULL)
     {
-        if(HB[iFinal] < HB[i])
+        if(hearBeat[iFinal].BPM < hearBeat[i].BPM)
         {
             iFinal = i;
         }
@@ -27,12 +31,13 @@ hearBeat getMax(hearBeat **HB){
 }
 
 
+////On remplacera par la fonction qui prend la dernière valeur du tri
 hearBeat getMin(hearBeat **HB){
     int i = 1;
     int iFinal = 0;
-    while(HB[i] != NULL)
+    while(hearBeat[i].BPM != NULL)
     {
-        if(HB[iFinal] > HB[i])'
+        if(hearBeat[iFinal].BPM > hearBeat[i].BPM)
         {
             iFinal = i;
         }
@@ -42,8 +47,14 @@ hearBeat getMin(hearBeat **HB){
 }
 
 
-float getAverage(hearBeat **HB){
-
+float getAverage(hearBeat **HB, int nbEntree){
+    float temp = hearBeat[0].BPM;
+    while(hearBeat[i].BPM != NULL)
+    {
+        temp += hearBeat[i].BPM;
+        i ++
+    }
+    return temp / nbEntree;//A verifier peut-être qu'il compte la valeur 0
 }
 
 
@@ -67,7 +78,7 @@ void showInterface(void){
                 {
                     //temps croissant
                     sort((HB, byDate))
-                    for(i=0; i>nbEntree; i++)
+                    for(i=0; i<nbEntree; i++)
                     {
                         printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
                     }
@@ -77,18 +88,30 @@ void showInterface(void){
                 {
                     //temps décroissant
                     sort((HB, byDate))
+                    for(i=nbEntree; i>0; i--)
+                    {
+                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                    }
                     return 0;
                 }
                 case 3:
                 {
                     //poul croissant
                     sort((HB, byBPM))
+                    for(i=0; i<nbEntree; i++)
+                    {
+                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                    }
                     return 0;
                 }
                 case 4:
                 {
                     //poul décroissant
                     sort((HB, byBPM))
+                    for(i=nbEntree; i>0; i--)
+                    {
+                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                    }
                     return 0;
                 }
             }
@@ -102,7 +125,7 @@ void showInterface(void){
         }
         case 3:
         {
-            printf("La moyenne du pouls est de : %f", getAverage(HB));
+            printf("La moyenne du pouls est de : %f", getAverage(HB, nbEntree));
             return 0;
         }
         case 4:
