@@ -3,5 +3,5 @@
 
 int main()
 {
-    nbEntrées = readCSV(HB);
+    nbEntree = readCSV(HB);
 }

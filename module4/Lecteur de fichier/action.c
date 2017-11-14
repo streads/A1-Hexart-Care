@@ -32,7 +32,7 @@ hearBeat getMin(hearBeat **HB){
     int iFinal = 0;
     while(HB[i] != NULL)
     {
-        if(HB[iFinal] > HB[i])
+        if(HB[iFinal] > HB[i])'
         {
             iFinal = i;
         }
@@ -66,21 +66,29 @@ void showInterface(void){
                 case 1:
                 {
                     //temps croissant
+                    sort((HB, byDate))
+                    for(i=0; i>nbEntree; i++)
+                    {
+                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                    }
                     return 0;
                 }
                 case 2:
                 {
                     //temps décroissant
+                    sort((HB, byDate))
                     return 0;
                 }
                 case 3:
                 {
                     //poul croissant
+                    sort((HB, byBPM))
                     return 0;
                 }
                 case 4:
                 {
                     //poul décroissant
+                    sort((HB, byBPM))
                     return 0;
                 }
             }
