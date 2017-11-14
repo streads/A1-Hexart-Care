@@ -1,0 +1,1 @@
+void createFile(FILE *f, char choice1, char choice2);
