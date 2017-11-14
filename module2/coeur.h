@@ -10,19 +10,19 @@ typedef struct outputPin {
   int state;
   int previousState;
   int changeStateTime;
-  struct outputPin *next;
+  short autoChange;
 }pinLed;
 
 
 // this function will be call one times to store all pins leds
-void initLedPin();
+int initLedPin(int pin[]);
 
-void addChild(int pin);
-void changeState(pinLed *led);
-void tick();
+
+int changeState(int index, int timeBeforeChangeAgain);
+int tick();
 void modeAll();
 // function to turn on pins in function of the mode selected
-void beat(int mode);
+void printLed(int mode);
 #ifdef __cplusplus
 } // extern "C"
 #endif

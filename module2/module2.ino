@@ -3,9 +3,17 @@
 #include "coeur.h"
 
 void setup(){
-  beat(5);
+  Serial.begin(9600);
+  int pins[] = {2,3,4,5,6,7,8,9,10};
+  initLedPin(pins);
+  printLed(1);
+  printLed(1);
+  printLed(1);
+  tick();
+
 }
 
 void loop(){
-
+  tick();
+  
 }
