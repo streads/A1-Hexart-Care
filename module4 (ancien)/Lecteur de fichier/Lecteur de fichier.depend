@@ -1,0 +1,11 @@
+# depslib dependency file v1.0
+1510751599 source:c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\lecteur de fichier\main.c
+	<stdio.h>
+	<stdlib.h>
+	"action.c"
+
+1510752412 c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\lecteur de fichier\action.c
+	"action.h"
+
+1510750190 c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\lecteur de fichier\action.h
+
