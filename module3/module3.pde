@@ -35,7 +35,9 @@ void appendInFile(String newData){
     if (bw != null){
       try { 
         bw.close(); 
-      } catch (IOException e) {}  
+      } catch (IOException e) {
+        System.out.print("error");
+      }  
     }
   }
 }

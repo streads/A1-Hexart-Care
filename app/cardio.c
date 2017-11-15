@@ -1,10 +1,9 @@
 #include "cardio.h"
 
-
 void startCapture(hearbeat *HB, int startTime, int period){
   HB->beat =0;
-  HB->startTime = 0;
-  HB->period = 0;
+  HB->startTime = startTime;
+  HB->period = period;
   HB->isOver =0;
 }
 
@@ -13,7 +12,17 @@ void beat(hearbeat *HB){
 }
 
 void determineBPM(hearbeat *HB){
-  HB->bpm = (HB->beat * 60) / HB->period;
+  HB->bpm = ((HB->beat * 60) / HB->period);
+}
+
+int processing(hearbeat *HB, int sensorValue){
+  if(sensorValue > detectionLimit){
+    beat(HB);
+    return 1;
+  }else{
+    return 0;
+  }
+  
 }
 
 int stopCapture(hearbeat *HB){

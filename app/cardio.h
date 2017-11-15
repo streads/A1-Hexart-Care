@@ -3,7 +3,7 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
+#define detectionLimit 600
 typedef struct hearbeat {
   int beat;
   int period;
@@ -20,6 +20,7 @@ void startCapture(hearbeat *HB, int startTime, int period);
 // ajoute un battement (HB->beat += 1);
 void beat(hearbeat *HB);
 
+int processing(hearbeat *HB, int sensorValue);
 
 // fonction permettant une fois la capture finir d'obtenir le nombre
 // de battement par minute

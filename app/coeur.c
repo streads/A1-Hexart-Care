@@ -2,82 +2,50 @@
 #include "coeur.h"
 #include "param.h"
 
-pinLed **LED = NULL;
+int LED[20];
 short ledLength;
-short lastLedIndex;
+short lastLedIndex = -1;
 
-void initLedPin(int pin[]) {
+void initLedPin(int pin[], int Length) {
+  ledLength = Length;
   int i;
-  ledLength = 14;
-
-  LED = malloc(sizeof(pinLed) * ledLength);
-  for (i = 0; i < ledLength; i++) {
-    LED[i] = NULL;
-  }
-  for (i = 0; i < ledLength; i++) {
-    pinLed *lcl = malloc(sizeof(pinLed));
-    lcl->pin = pin[i];
-    lcl->state = LOW;
-    lcl->previousState = LOW;
-    lcl->changeStateTime = 0;
-    lcl->autoChange = 0;
-    pinMode(lcl->pin, OUTPUT);
-    LED[i] = lcl;
+  for(i = 0; i < ledLength; i++){
+    LED[i] = pin[i];
+    pinMode(pin[i], OUTPUT);
   }
 }
 
 
-void changeState(int i, int timeBeforeChangeAgain) {
-
-  LED[i]->previousState = LED[i]->state;
-  if (LED[i]->state == LOW) {
-    LED[i]->state = HIGH;
-  } else {
-    LED[i]->state = LOW;
-  }
-  digitalWrite(LED[i]->pin, LED[i]->state);
-  if (timeBeforeChangeAgain < 0) {
-    LED[i]->autoChange = 0;
-  } else {
-    LED[i]->autoChange = 1;
-    LED[i]->changeStateTime = millis() + timeBeforeChangeAgain;
-  }
+void turnOn(int i) {
+  digitalWrite(LED[i], HIGH);
   lastLedIndex = i;
+ 
 }
-
-void tick() {
+void clearLed(){
   int i;
-  int z = millis();
-  for (i = 0; i < ledLength; i++) {
-    if(LED[i]->autoChange){
-      if ((LED[i]->changeStateTime - z) < 0){
-        changeState(i, -1);
-      }
-    }
+  for(i = 0; i < ledLength; i++){
+    digitalWrite(LED[i], LOW);
   }
 }
 
 void modeAll() {
   int i = 0;
   for (i = 0; i < ledLength; i++) {
-    if (LED[i] == NULL) {
-      return;
-    }
-    changeState(i, millis() + 200);
+    turnOn(i);
   }
 }
 void modeOneByOne(){
-  if (LED[lastLedIndex +1] != NULL){
-    changeState(lastLedIndex +1, 200);
+  if (lastLedIndex < ledLength - 1){
+    turnOn(lastLedIndex +1);
   }else{
-    changeState(0, 200);
+    turnOn(0);
   }
 }
 
 void modeOneForX(){
   int i;
   for(i = 0; i < ledLength; i+=parameter){
-    changeState(i, 200);
+    turnOn(i);
   }
 }
 
@@ -93,11 +61,21 @@ void printLed() {
       modeOneByOne();
       break;     
     case 4:
-      changeState(parameter, 200);
+      turnOn(parameter);
       break;         
     default:
       modeAll();
       break;
   }
 }
+
+//void clearLed(){
+//  int i =0;
+//  for(i = 0; i<ledLength; i++){
+//    if(LED[i] == NULL){return;}
+//    if(LED[i]->state == HIGH){
+//      changeState(i);
+//    }
+//  }
+//}
 

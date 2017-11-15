@@ -15,15 +15,15 @@ typedef struct outputPin {
 
 
 // this function will be call one times to store all pins leds
-void initLedPin(int pin[]);
+void initLedPin(int pin[], int Length);
 
-
-void changeState(int index, int timeBeforeChangeAgain);
-void tick();
+//
+void turnOn(int index);
+void clearLed();
 void modeAll();
 void modeOneByOne();
 void modeOneForX();
-// function to turn on pins in function of the mode selected
+//// function to turn on pins in function of the mode selected
 void printLed();
 #ifdef __cplusplus
 } // extern "C"
