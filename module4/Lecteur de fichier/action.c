@@ -1,150 +1,161 @@
 #include "action.h"
 
 
-int readCSV(hearBeat **HB){
+void readCSV(FILE *f, hearBeat **HB){
     char temp[LENGTH_LINE];
-    FILE *f = NULL;
-    f = fopen;
     int i = 0;
     while(fgets(temp, LENGTH_LINE, f) != NULL)
     {
-        sscanf(temp, "%d;%d", &(hearBeat[i].timestamp), &(hearBeat[i].BPM));
-        i ++
+        sscanf(temp, "%d;%d", &(HB[i]->timestamp), &(HB[i]->BPM));
+        i ++;
     }
-    return i -1;
+    return;
 }
 
 
+int getLength(FILE *f){
+    char temp[LENGTH_LINE];
+    int i = 0;
+
+    while(fgets(temp, LENGTH_LINE, f) != NULL)
+    {
+        i ++;
+    }
+    return i;
+}
+
 //On remplacera par la fonction qui prend la 1ère valeur du tri
-hearBeat getMax(hearBeat **HB){
+hearBeat * getMax(hearBeat **HB, int n){
     int i = 1;
     int iFinal = 0;
-    while(hearBeat[i].BPM != NULL)
-    {
-        if(hearBeat[iFinal].BPM < hearBeat[i].BPM)
+
+    for(i = 1; i < n; i++){
+        if(HB[i]->BPM > HB[iFinal]->BPM)
         {
             iFinal = i;
         }
-        i ++;
     }
-    return iFinal;
+    return HB[iFinal];
 }
 
 
 ////On remplacera par la fonction qui prend la dernière valeur du tri
-hearBeat getMin(hearBeat **HB){
+hearBeat * getMin(hearBeat **HB, int n){
     int i = 1;
     int iFinal = 0;
-    while(hearBeat[i].BPM != NULL)
-    {
-        if(hearBeat[iFinal].BPM > hearBeat[i].BPM)
+
+    for(i = 1; i < n; i++){
+        if(HB[i]->BPM < HB[iFinal]->BPM)
         {
             iFinal = i;
         }
-        i ++;
     }
-    return iFinal;
+    return HB[iFinal];
 }
 
-
-float getAverage(hearBeat **HB, int nbEntree){
-    float temp = hearBeat[0].BPM;
-    while(hearBeat[i].BPM != NULL)
+float getAverage(hearBeat **HB, int sizeCSV){
+    float temp = 0;
+    int i;
+    for(i=0; i<sizeCSV; i++)
     {
-        temp += hearBeat[i].BPM;
-        i ++
+        temp += HB[i]->BPM;
     }
-    return temp / nbEntree;//A verifier peut-être qu'il compte la valeur 0
+    return temp / sizeCSV;//A verifier peut-être qu'il compte la valeur 0
 }
 
 
-void sort(hearBeat **HB, *(Cmp)){
+void sort(int sizeCSV, hearBeat **HB, int (cmp)(hearBeat *, hearBeat *)){
     //Thibault rempli avec son SUPER algorithme de tri fusion
 }
 
-void showInterface(void){
+void showInterface(hearBeat **HB_DateSort, hearBeat **HB_BPMSort, int sizeCSV){
+    int i;
     short entree = 0;
     printf("Que voulez vous faire ?\n1. Afficher les données\n2. Afficher les données pour un temps particulier\n3. Afficher la moyenne de poul\n4. Afficher le nombre de pouls enregistré\n5. Afficher le maximum de poul\n6. Afficher le minimum de poul\n");
-    scanf("%c", entree);
+    scanf("%c", &entree);
     switch(entree)
     {
         case 1:
         {
             printf("Vous voulez :\n1. Afficher les données dans l'ordre croissant de temps\n2. Afficher les données dans l'ordre décroissant de temps\n3. Afficher les données dans l'ordre croissant de pouls\n4. Afficher les données dans l'ordre décroissant de pouls");
-            scanf("%d", entree);
+            scanf("%d", &entree);
             switch(entree)
             {
                 case 1:
                 {
                     //temps croissant
-                    sort((HB, byDate))
-                    for(i=0; i<nbEntree; i++)
+                    for(i=0; i<sizeCSV; i++)
                     {
-                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                        printf("%d  -  %d", HB_DateSort[i]->BPM, HB_DateSort[i]->timestamp);
                     }
-                    return 0;
+                    return;
                 }
                 case 2:
                 {
                     //temps décroissant
-                    sort((HB, byDate))
-                    for(i=nbEntree; i>0; i--)
+                    for(i=sizeCSV; i>0; i--)
                     {
-                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                        printf("%d  -  %d", HB_DateSort[i]->BPM, HB_DateSort[i]->timestamp);
                     }
-                    return 0;
+                    return;
                 }
                 case 3:
                 {
                     //poul croissant
-                    sort((HB, byBPM))
-                    for(i=0; i<nbEntree; i++)
+                    for(i=0; i<sizeCSV; i++)
                     {
-                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                        printf("%d  -  %d", HB_BPMSort[i]->BPM, HB_BPMSort[i]->timestamp);
                     }
-                    return 0;
+                    return;
                 }
                 case 4:
                 {
                     //poul décroissant
-                    sort((HB, byBPM))
-                    for(i=nbEntree; i>0; i--)
+                    for(i=sizeCSV; i>0; i--)
                     {
-                        printf("%d  -  %d", hearBeat[i].BPM, hearBeat[i].timestamp)
+                        printf("%d  -  %d", HB_BPMSort[i]->BPM, HB_BPMSort[i]->timestamp);
                     }
-                    return 0;
+                    return ;
                 }
             }
-            return 0;
+            return ;
         }
         case 2:
         {
             //Il faut faire la partie "Rechercher et afficher les données pour un temps particulier"
             printf("Cette partie est encore en construction");
-            return 0;
+            return;
         }
         case 3:
         {
-            printf("La moyenne du pouls est de : %f", getAverage(HB, nbEntree));
-            return 0;
+            printf("La moyenne du pouls est de : %f", getAverage(HB_DateSort, sizeCSV));
+            return;
         }
         case 4:
         {
-            printf("Il y a %d pouls enregistrés", nbEntrées);
-            return 0;
+            printf("Il y a %d pouls enregistrés", sizeCSV);
+            return;
         }
         case 5:
         {
-            hearBeat max = getMax(HB);
-            printf("Le poul le plus élevé est de %d", max.BPM);
-            return 0;
+            hearBeat *max = getMax(HB_DateSort, sizeCSV);
+            printf("Le poul le plus élevé est de %d", max->BPM);
+            return;
         }
         case 6:
         {
-            hearBeat min = getMin(HB);
-            printf("Le poul le plus bas est de %d", min.BPM)
-            return 0;
+            hearBeat *min = getMin(HB_DateSort, sizeCSV);
+            printf("Le poul le plus bas est de %d", min->BPM);
+            return;
         }
     }
+    return;
+}
 
+int bestBPM(hearBeat *a, hearBeat *b){
+    if (a->BPM >= b->BPM){
+        return 0;
+    }else{
+        return 1;
+    }
 }

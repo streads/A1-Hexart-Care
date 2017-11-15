@@ -6,25 +6,29 @@
 typedef struct hearBeat{
     int timestamp;
     int BPM;
-}hearBeat
+}hearBeat;
 
 
-int readCSV(hearBeat **HB);
+void readCSV(FILE *f, hearBeat **HB);
 
 
-hearBeat getMax(hearBeat **HB);
+int getLength(FILE *f);
 
 
-void getMin(hearBeat **HB);
+hearBeat * getMax(hearBeat **HB, int n);
 
 
-float getAverage(hearBeat **HB, int nbEntree);
+hearBeat * getMin(hearBeat **HB, int n);
 
 
-void sort(hearBeat **HB, *(Cmp));
+float getAverage(hearBeat **HB, int sizeCSV);
 
 
-void showInterface(void);
+void sort(int sizeCSV, hearBeat **HB, int (cmp)(hearBeat *, hearBeat *));
 
+
+void showInterface(hearBeat **HB_DateSort, hearBeat **HB_BPMSort, int sizeCSV);
+
+int bestBPM(hearBeat *a, hearBeat *b);
 
 #endif // ACTION_H_INCLUDED
