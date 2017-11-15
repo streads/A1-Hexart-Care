@@ -1,7 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include "action.c"
+#include "menu.h"
+#include "donnees.h"
+#include "actions.h"
 
 
 int main()
@@ -29,3 +31,4 @@ int main()
     printf("Salut a tous c'est Squeezie");
 
     return 0;
+}
