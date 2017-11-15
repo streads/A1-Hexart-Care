@@ -9,7 +9,7 @@ typedef struct hearBeat{
 }hearBeat;
 
 
-void readCSV(FILE *f, hearBeat **HB);
+void readCSV(FILE *f, hearBeat *HB);
 
 
 int getLength(FILE *f);
@@ -27,7 +27,11 @@ float getAverage(hearBeat **HB, int sizeCSV);
 void sort(int sizeCSV, hearBeat **HB, int (cmp)(hearBeat *, hearBeat *));
 
 
-void showInterface(hearBeat **HB_DateSort, hearBeat **HB_BPMSort, int sizeCSV);
+short showInterface(hearBeat **HB_DateSort, hearBeat **HB_BPMSort, int sizeCSV);
+
+
+void showInterfaceCase1(hearBeat **HB_DateSort, hearBeat **HB_BPMSort, int sizeCSV);
+
 
 int bestBPM(hearBeat *a, hearBeat *b);
 
