@@ -1,3 +1,4 @@
+// fichier de test voir le dossier app pour voir le module cardio bien integré.
 #include "Arduino.h"
 #include "cardio.c"
 

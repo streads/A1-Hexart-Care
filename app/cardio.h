@@ -3,7 +3,9 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
+
 #define detectionLimit 600
+
 typedef struct hearbeat {
   int beat;
   int period;

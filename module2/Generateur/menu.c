@@ -1,7 +1,7 @@
 #include <stdio.h>
 
 char showMenu(){
-    system("cls");
+    system("cls"); // vide la console
     printf("||------------------------------------------------------||\n");
     printf("||       Menu : Configure ton battement de coeur        ||\n");
     printf("||------------------------------------------------------||\n");
@@ -12,7 +12,7 @@ char showMenu(){
     printf("||--5-Pour-quitter--------------------------------------||\n");
     printf("||------------------------------------------------------||\n");   
     printf("Votre choix: ");
-    return getche(); 
+    return getche(); // getche() retourne la valeur de la touche pressé a la suite de son appel
 }
 
 char showSubMenu(char choice){

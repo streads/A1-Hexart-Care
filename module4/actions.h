@@ -5,7 +5,7 @@
 void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heartBeat *));
 
 
-void read(FILE *s, struct heartBeat **h, int *m);
+void read(FILE *s, struct heartBeat **h, int m);
 
 
 void showReversed(int n, struct heartBeat *a);
