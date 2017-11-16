@@ -6,7 +6,7 @@
 int main(int argc, char **argcv){
 
     FILE* f = NULL;
-    f = fopen("app/param.h","w");
+    f = fopen("app/param.h","w"); // on ouvre le fichier app/param.h en mode d'écriture
     if (f == NULL){
         printf("Impossible d'ouvrir le fichier");
         return 1;
@@ -37,7 +37,7 @@ int main(int argc, char **argcv){
         return 0;
     }
     system("cls");
-    createFile(f, choice1, choice2);
+    createFile(f, choice1, choice2); // appel de la fonction ecrivant dans notre fichier param.h les parametres d'allumage des leds
     fclose(f);
     printf("Fichier g%cn%cr%c.\n", 130, 130, 130);
     printf("Voulez vous le transferer sur l'arduino ?\n");
@@ -50,6 +50,7 @@ int main(int argc, char **argcv){
 
     if(choice3 == 'y'){
         printf("Envoi en cours . . .\n");
+        // permet d'envoyer un projet ino sur un arduino branché en usb
         system("arduino_debug.exe --upload app/app.ino");
 
     }
