@@ -11,6 +11,7 @@ void UI(struct heartBeat *dataLoaded, int size){
     choice = showMenu();
   }while(choice != '1' && choice != '2' && choice != '3' && choice != '4' && choice != '5' && choice != '5' && choice != 'q');
   switch (choice){
+  //Traite chaque cas correspondant à chaque option du menu, et redemande à chaque fois que la valeur n'est pas prise en compte
     case '1':
       do{choice = showSubMenu1();}while(choice != '1' && choice != '2' && choice != '3' && choice != '4' && choice != 'q');
       if (choice == 'q'){return;}
@@ -20,6 +21,7 @@ void UI(struct heartBeat *dataLoaded, int size){
       if(choice == '2' || choice == '4'){showReversed(size, dataLoaded);}
       do{choice = showBackMenu1();}while(choice != 'y' && choice != 'n');
       if(choice == 'y'){UI(dataLoaded, size);}else{return;}
+      //Affiche les sous menu et afficher l'information demandé par l'utilisateur, puis quitte ou retourne dans le menu principal
       break;
     case '2':
       printf("_______________________________________________\n");
@@ -32,6 +34,7 @@ void UI(struct heartBeat *dataLoaded, int size){
       do{choice = showBackMenu1();}while(choice != 'y' && choice != 'n');
       if(choice == 'y'){UI(dataLoaded, size);}else{return;}
       break;
+      //Demande un intervalle de temps en timestamp et affiche les données demandé par l'utilisateur, puis quitte ou retourne dans le menu principal
     case '3':
       sort(size, dataLoaded, compare_by_date);
       printf("\nY pour saisir une plage de donn%ce: \n[y]es / no: ", 130);
@@ -50,6 +53,7 @@ void UI(struct heartBeat *dataLoaded, int size){
       do{choice = showBackMenu1();}while(choice != 'y' && choice != 'n');
       if(choice == 'y'){UI(dataLoaded, size);}else{return;}
       break;
+      //Demande un intervalle de temps en timestamp et affiche les données demandé par l'utilisateur, puis quitte ou retourne dans le menu principal
     case '4':
       sort(size, dataLoaded, compare_by_date);
       printf("\nY pour saisir une plage de donn%ce: \n[y]es / no: ", 130);
@@ -69,15 +73,18 @@ void UI(struct heartBeat *dataLoaded, int size){
       printf("Valeur maximum de pouls trouv%c entre %d et %d : %d\n", 130, underTimestamp, overTimestamp, max);
       do{choice = showBackMenu1();}while(choice != 'y' && choice != 'n');
       if(choice == 'y'){UI(dataLoaded, size);}else{return;}
+      //Demande un intervalle de temps en timestamp et affiche les données demandé par l'utilisateur, puis quitte ou retourne dans le menu principal
       break;
     case '5':
       system("cls");
       printf(" > Il y a actuellement %d pouls en memoire\n", size);
       do{choice = showBackMenu1();}while(choice != 'y' && choice != 'n');
       if(choice == 'y'){UI(dataLoaded, size);}else{return;}
+      //Affiche le nombre de donnnées sauvegardé
       break;
     case 'q':
       return;
+      //Retourne dans le main afin de fermer le programme
       break;
   }
 }
@@ -97,6 +104,7 @@ char showMenu(){
     printf("||------------------------------------------------------||\n");
     printf("Votre choix: ");
     return getche();
+    //La fonction getche retourne la prochaine entrée du clavier
 }
 
 
