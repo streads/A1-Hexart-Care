@@ -19,8 +19,7 @@ void initLedPin(int pin[], int Length) {
 void turnOn(int i) {
   digitalWrite(LED[i], HIGH);
   lastLedIndex = i;
-
-  
+ 
 }
 void clearLed(){
   int i;
