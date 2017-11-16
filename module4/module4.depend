@@ -1,0 +1,27 @@
+# depslib dependency file v1.0
+1510825260 source:c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\actions.c
+	<stdlib.h>
+	<stdio.h>
+	"donnees.h"
+
+1510825256 c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\donnees.h
+
+1510825254 source:c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\donnees.c
+	"donnees.h"
+
+1510825725 source:c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\main.c
+	<stdlib.h>
+	<stdio.h>
+	"menu.h"
+	"donnees.h"
+	"actions.h"
+
+1510825781 c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\menu.h
+	"donnees.h"
+
+1510825397 c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\actions.h
+
+1510825821 source:c:\users\micro\onedrive - association cesi viacesi mail\exia\projets\a1-hexart-care\module4\menu.c
+	"stdio.h"
+	"menu.h"
+

@@ -1,6 +1,8 @@
 #include <stdlib.h>
 #include <stdio.h>
+
 #include "donnees.h"
+
 
 int getLength(FILE *f){
     fseek(f, 0, SEEK_SET);
@@ -51,6 +53,7 @@ void fuse(struct heartBeat *a, struct heartBeat *tmp, int s0, int e0, int s1, in
 	}
 }
 
+
 void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heartBeat *)) {
 	int p0, e0, e1, strd = 1;
 
@@ -92,22 +95,24 @@ void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heart
 	}
 }
 
+
 void showReversed(int n, struct heartBeat *a) {
   int i;
   system("cls");
-  printf("            TIMESTAMP             BPM\n");  
+  printf("            TIMESTAMP             BPM\n");
   printf("_______________________________________________\n");
   for (i = n; i-- > 0; )
-  {    
+  {
     printf("%18d %18d\n", a[i].timestamp, a[i].bpm);
   }
   printf("_______________________________________________\n");
 }
 
+
 void show(int n, struct heartBeat *a) {
   int i;
   system("cls");
-  printf("            TIMESTAMP             BPM\n");    
+  printf("            TIMESTAMP             BPM\n");
   printf("_______________________________________________\n");
   for(i = 0; i < n; ++i) {
     printf("%18d %18d\n", a[i].timestamp, a[i].bpm);
@@ -115,10 +120,11 @@ void show(int n, struct heartBeat *a) {
   printf("_______________________________________________\n");
 }
 
+
 void showInRange(int n, struct heartBeat *a, int min, int max) {
   int i;
   system("cls");
-  printf("            TIMESTAMP             BPM\n");    
+  printf("            TIMESTAMP             BPM\n");
   printf("_______________________________________________\n");
   for(i = 0; i < n; ++i) {
     if (min <= a[i].timestamp && a[i].timestamp <= max){
@@ -127,6 +133,8 @@ void showInRange(int n, struct heartBeat *a, int min, int max) {
   }
   printf("_______________________________________________\n");
 }
+
+
 int moyInRange(int n, struct heartBeat *a, int min, int max) {
   int i;
   int sum = 0;
@@ -140,19 +148,21 @@ int moyInRange(int n, struct heartBeat *a, int min, int max) {
   return sum/counter;
 }
 
+
 int getFirstBPMInRage(int n, struct heartBeat *a, int min, int max){
     int i;
     for(i = 0; i < n; ++i) {
     if (min <= a[i].timestamp && a[i].timestamp <= max){
       return a[i].bpm;
     }
-  } 
+  }
 }
+
 
 int getLastBPMInRage(int n, struct heartBeat *a, int min, int max){
   int i;
   for (i = n; i-- > 0; )
-  { 
+  {
     if (min <= a[i].timestamp && a[i].timestamp <= max){
       return a[i].bpm;
     }
