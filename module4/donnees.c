@@ -1,5 +1,6 @@
 #include "donnees.h"
-
+#include "stdio.h"
+#include "stdlib.h"
 
 void read(FILE *s, struct heartBeat **h, int m) {
   fseek(s, 0, SEEK_SET);

@@ -18,7 +18,7 @@ int main(int argc, char **argv) {
     exit(-1);
   }
 
-  int n = getLength(s, n);
+  int n = getLength(s);
 
   read(s, (struct heartBeat **)&dataLoaded, n); // ajouté
 
