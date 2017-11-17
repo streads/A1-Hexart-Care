@@ -6,16 +6,16 @@
 
 
 #define LENGTH_LINE 30
-
+//On définit la taille maximum d'un ligne dans le fichier .csv à 30 caractères
 
 typedef struct heartBeat {
     int timestamp;
     int bpm;
 } ab;
-
+//Structure liant un battement par minute à une date (en timestamp)
 
 void read(FILE *s, struct heartBeat **h, int m);
-
+//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
 
 void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heartBeat *));
 
