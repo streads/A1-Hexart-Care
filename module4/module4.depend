@@ -27,3 +27,21 @@
 	"stdio.h"
 	"menu.h"
 
+1510863826 source:c:\users\thiba\onedrive - association cesi viacesi mail\projet\hexiacare\module4\actions.c
+	<stdlib.h>
+	<stdio.h>
+	"actions.h"
+
+1510863915 c:\users\thiba\onedrive - association cesi viacesi mail\projet\hexiacare\module4\actions.h
+	"donnees.h"
+
+1510863826 c:\users\thiba\onedrive - association cesi viacesi mail\projet\hexiacare\module4\donnees.h
+	"stdio.h"
+
+1510863826 source:c:\users\thiba\onedrive - association cesi viacesi mail\projet\hexiacare\module4\menu.c
+	"stdio.h"
+	"menu.h"
+
+1510863826 c:\users\thiba\onedrive - association cesi viacesi mail\projet\hexiacare\module4\menu.h
+	"donnees.h"
+

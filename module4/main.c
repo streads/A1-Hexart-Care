@@ -8,7 +8,7 @@
 
 int main(int argc, char **argv) {
 
-  FILE *s;
+  FILE *s = NULL;
 
   struct heartBeat *dataLoaded;
 
