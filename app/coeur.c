@@ -35,6 +35,12 @@ void modeAll() { // allume toutes les leds
     turnOn(i);
   }
 }
+
+void modeRandom() { // allume toutes les leds
+ // int i = random(0,ledLength - 1);
+ // turnOn(i);
+}
+
 void modeOneByOne(){ // allume une leds apres l'autre
   if (lastLedIndex < ledLength - 1){
     turnOn(lastLedIndex +1);
