@@ -1,4 +1,6 @@
-#include "stdio.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <conio.h>
 #include "menu.h"
 #include "generateCode.h"
 
