@@ -10,8 +10,8 @@ Serial udSerial;
 
 void setup() {
   udSerial = new Serial(this, Serial.list()[0], 9600);
-  appendInFile(new java.util.Date().getTime() / 1000 + ";" + (int) (Math.random() * 300)); // add a random value
 }
+
 void draw() {
   if (udSerial.available() > 0) {
     String SenVal = udSerial.readString();

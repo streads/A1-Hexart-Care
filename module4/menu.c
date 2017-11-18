@@ -1,12 +1,11 @@
-#include "stdio.h"
+#include <stdio.h>
 
 #include "menu.h"
 
 
 void UI(struct heartBeat *dataLoaded, int size){
   char choice;
-  int underTimestamp;
-  int overTimestamp;
+  int underTimestamp, overTimestamp;
   do {
     choice = showMenu();
   }while(choice != '1' && choice != '2' && choice != '3' && choice != '4' && choice != '5' && choice != '5' && choice != 'q');
@@ -24,10 +23,10 @@ void UI(struct heartBeat *dataLoaded, int size){
       //Affiche les sous menu et afficher l'information demandé par l'utilisateur, puis quitte ou retourne dans le menu principal
       break;
     case '2':
-      printf("_______________________________________________\n");
+      printf("\n_______________________________________________\n");
       printf("Merci de suivre cettes syntaxe: timestamp1-timestamp2\n");
       printf("Exemple: 1510793141-1510793154\n");
-      scanf("%d-%d", &underTimestamp, &overTimestamp);
+      scanf("%d/%d/%d", &underTimestamp, &overTimestamp);
       printf("_______________________________________________\n");
       sort(size, dataLoaded, compare_by_date);
       showInRange(size, dataLoaded, underTimestamp, overTimestamp);
@@ -39,7 +38,7 @@ void UI(struct heartBeat *dataLoaded, int size){
       sort(size, dataLoaded, compare_by_date);
       printf("\nY pour saisir une plage de donn%ce: \n[y]es / no: ", 130);
       if(getche() == 'y'){
-        printf("_______________________________________________\n");
+        printf("\n_______________________________________________\n");
         printf("Merci de suivre cettes syntaxe: timestamp1-timestamp2\n");
         printf("Exemple: 1510793141-1510793154\n");
         scanf("%d-%d", &underTimestamp, &overTimestamp);
@@ -58,7 +57,7 @@ void UI(struct heartBeat *dataLoaded, int size){
       sort(size, dataLoaded, compare_by_date);
       printf("\nY pour saisir une plage de donn%ce: \n[y]es / no: ", 130);
       if(getche() == 'y'){
-        printf("_______________________________________________\n");
+        printf("\n_______________________________________________\n");
         printf("Merci de suivre cettes syntaxe: timestamp1-timestamp2\n");
         printf("Exemple: 1510793141-1510793154\n");
         scanf("%d-%d", &underTimestamp, &overTimestamp);
@@ -67,8 +66,8 @@ void UI(struct heartBeat *dataLoaded, int size){
         underTimestamp = dataLoaded[0].timestamp;
         overTimestamp = dataLoaded[size - 1].timestamp;
       }
-      int min = getFirstBPMInRage(size, dataLoaded, underTimestamp, overTimestamp);
-      int max = getLastBPMInRage(size, dataLoaded, underTimestamp, overTimestamp);
+      int min = getFirstBPMInRange(size, dataLoaded, underTimestamp, overTimestamp);
+      int max = getLastBPMInRange(size, dataLoaded, underTimestamp, overTimestamp);
       printf("\nValeur minimum de pouls trouv%c entre %d et %d : %d\n", 130, underTimestamp, overTimestamp, min);
       printf("Valeur maximum de pouls trouv%c entre %d et %d : %d\n", 130, underTimestamp, overTimestamp, max);
       do{choice = showBackMenu1();}while(choice != 'y' && choice != 'n');
@@ -140,36 +139,44 @@ char showBackMenu1(){
 void showReversed(int n, struct heartBeat *a) {
   int i;
   system("cls");
-  printf("            TIMESTAMP             BPM\n");
+  char * buffer = malloc(sizeof(char) * 80);
+  printf("         DATE                       BPM\n");
   printf("_______________________________________________\n");
   for (i = n; i-- > 0; )
   {
-    printf("%18d %18d\n", a[i].timestamp, a[i].bpm);
+    getDate(buffer, a[i].timestamp);
+    printf(" %18s %18d\n", buffer, a[i].bpm);
   }
   printf("_______________________________________________\n");
+  free(buffer);
 }
 
 
 void show(int n, struct heartBeat *a) {
   int i;
+  char * buffer = malloc(sizeof(char) * 80);
   system("cls");
-  printf("            TIMESTAMP             BPM\n");
+  printf("         DATE                       BPM\n");
   printf("_______________________________________________\n");
   for(i = 0; i < n; ++i) {
-    printf("%18d %18d\n", a[i].timestamp, a[i].bpm);
+    getDate(buffer, a[i].timestamp);
+    printf(" %18s %18d\n", buffer, a[i].bpm);
   }
   printf("_______________________________________________\n");
+  free(buffer);
 }
 
 
 void showInRange(int n, struct heartBeat *a, int min, int max) {
   int i;
+  char * buffer = malloc(sizeof(char) * 80);
   system("cls");
-  printf("            TIMESTAMP             BPM\n");
+  printf("         DATE                       BPM\n");
   printf("_______________________________________________\n");
   for(i = 0; i < n; ++i) {
     if (min <= a[i].timestamp && a[i].timestamp <= max){
-      printf("%18d %18d\n", a[i].timestamp, a[i].bpm);
+      getDate(buffer, a[i].timestamp);
+      printf(" %18s %18d\n", buffer, a[i].bpm);
     }
   }
   printf("_______________________________________________\n");

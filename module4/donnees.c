@@ -1,9 +1,9 @@
 #include "donnees.h"
-#include "stdio.h"
-#include "stdlib.h"
+#include <stdio.h>
+#include <stdlib.h>
 
 void read(FILE *s, struct heartBeat **h, int m) {
-  fseek(s, 0, SEEK_SET);
+  fseek(s, 0, SEEK_SET); // remet le curseur au debut du fichier
   char tab[60];
   struct heartBeat *tmph;
   if((*h = (struct heartBeat *)malloc(sizeof(struct heartBeat) * (m))) == NULL) {
@@ -14,7 +14,7 @@ void read(FILE *s, struct heartBeat **h, int m) {
   int i;
   tmph = *h;
   for(i = 0; i < (m); ++i) {
-    int ntok = fscanf(s, "%d;%d", &(tmph[i].timestamp), &(tmph[i].bpm));
+    int ntok = fscanf(s, "%d;%d", &(tmph[i].timestamp), &(tmph[i].bpm)); // on lit la ligne et recupere les donné dans notre structure
     if(ntok != 2) {
       printf("File wrongly formatted.\n");
       exit(-1);
@@ -23,7 +23,7 @@ void read(FILE *s, struct heartBeat **h, int m) {
 }
 
 
-void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heartBeat *)) {
+void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heartBeat *)) { // fonction de tri
 	int p0, e0, e1, strd = 1;
 
 	struct heartBeat *tmp, *tmp0, *orig = a;
@@ -62,6 +62,7 @@ void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heart
 			orig[p0] = a[p0];
 		}
 	}
+	free(tmp);
 }
 
 

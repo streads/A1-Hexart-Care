@@ -1,2 +1,2 @@
-#define mode 2
+#define mode 1
 #define parameter 1

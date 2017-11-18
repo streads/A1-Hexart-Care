@@ -14,8 +14,9 @@ typedef struct heartBeat {
 } ab;
 //Structure liant un battement par minute à une date (en timestamp)
 
+// fonction pour lire notre fichier et le mettre dans un tableau d'hearbeat
 void read(FILE *s, struct heartBeat **h, int m);
-//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+
 
 void sort(int n, struct heartBeat *a, int (cmp)(struct heartBeat *, struct heartBeat *));
 
